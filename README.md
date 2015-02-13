@@ -1,2 +1,0 @@
-# getramnow
-GetRAMNow-site
