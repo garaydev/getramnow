@@ -96,3 +96,32 @@ border-bottom-color: #18bc9c;
     background:#008080;
     margin: 0px auto;
 }
+
+/* Media queries baby!*/
+
+@media (max-width:500px) {
+
+    #whatis{
+    font-size:40px;
+    }
+    
+    #threeSteps{
+    display: block;
+    }
+    
+}
+
+/* IconMoon Icon styles*/
+.fs1 {
+	font-size: 65px;
+}
+
+button .fs1:hover {
+	font-size: 70px;
+    color:#18bc9c;
+}
+
+.activeFS1 {
+	font-size: 70px;
+    color:#18bc9c;
+}
