@@ -1,17 +1,38 @@
 /*
 
-Writted and maintained by @GarayDev
-
-Version History:
-
-Date                Comment                         Dev
-__________________________________________________________________
-08/??/2014  Created                             @GarayDev
-01/04/2015  Added version comment secition      @GarayDev
+Writted and maintained by Annie!
 
 */
 $(document).ready(function(){
+    
+    $("#downloadBar").hide();
+    
+     //spyscroll
+    $('body').scrollspy({ target: '.navbar-collapse' });
+    
+    //owl
+     $("#owl-example").owlCarousel({
+autoPlay: 7000, //Set AutoPlay to 7 seconds
+singleItem:true
+ 
+});
+    
+    //navigation animation code
+        $('.navs a[href*=#]:not([href=#])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+        || location.hostname == this.hostname) {
 
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+               if (target.length) {
+                 $('html,body').animate({
+                     scrollTop: target.offset().top
+                }, 1000);
+                return false;
+            }
+        }
+    });
+    
     ( function( $ ) {
     // Init Skrollr
     var s = skrollr.init({
@@ -27,14 +48,9 @@ var $body   = $(document.body);
 var navHeight = $('.navbar').outerHeight(true) + 10;
 
 $body.scrollspy({
-	target: '#leftCol',
+	target: '#menuTop',
 	offset: navHeight
 });
-    
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#small-bar-wrapper").toggleClass("toggled");
-    });
    
     //remove collapse for navbar-bar when clicked
     $(function() {
@@ -45,19 +61,21 @@ $body.scrollspy({
         });
     });
     
-    $(function(){
-     
-        $(document).on( 'scroll', function(){
-     
-            if ($(window).scrollTop() > 100) {
-                $('.scroll-top-wrapper').addClass('show');
-            } else {
-                $('.scroll-top-wrapper').removeClass('show');
-            }
-        });
-     
-        $('.scroll-top-wrapper').on('click', scrollToTop);
+
+    //click download RAM button
+    $('#h-fill-animation-start').click(function() {
+    $('.progress .progress-bar').progressbar({
+        display_text: 'fill',
+        transition_delay: 1000,
+        done: function(){ $('#done').append('<h1> Yeah! You just downloaded RAM</h1>');
+                          $('#downloadBarSub').removeClass('progress-bar-success');
+                          $('#downloadBarSub').addClass('progress-bar-info')
+                          
+                        }
     });
+    $('#downloadBar').slideDown( "slow" );
+   });
+    
     
 });
 
