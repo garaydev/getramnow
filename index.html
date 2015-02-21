@@ -120,6 +120,7 @@
             
             
             <br/>
+        <hr>
         </div>
         </div>
         <!-- END OF ABOUT SECTION-->
@@ -130,62 +131,89 @@
         <br/>
         <br/>
         <h1 class="bolderDark larger" >Getting Started</h1>
+        <hr>
             <i class="reviews-icon fa fa-road  fa-5x "></i>
         <h1> It's as easy as <span id="threeSteps" class="bolderLight larger"> 1 ... 2 ... 3</span></h1>
         <hr>
-        <div class="text-center col-md-12 imgIcon">
-            <div class="circle text-center">1</div>
-            <br>
-            
+<!-- START OF Wizard Setup-->
+<div class="container">
+	<div class="row form-group">
+        <div class="col-xs-12">
+            <ul class="nav nav-pills nav-justified thumbnail setup-panel">
+                <li class="active"><a href="#step-1">
+                    <div class="circle text-center">1</div>    
+                    <h4 class="list-group-item-heading">Step 1</h4>
+                    <p class="setup-desc list-group-item-text"> Pick your RAM</p>
+                </a></li>
+                <li class="disabled"><a href="#step-2">
+                    <div class="circle text-center">2</div>  
+                    <h4 class="list-group-item-heading">Step 2</h4>
+                    <p class="setup-desc list-group-item-text">Is this your browser?</p>
+                </a></li>
+                <li class="disabled"><a href="#step-3">
+                    <div class="circle text-center">3</div>  
+                    <h4 class="list-group-item-heading">Step 3</h4>
+                    <p class="setup-desc list-group-item-text">Start Downloading!</p>
+                </a></li>
+            </ul>
         </div>
-        <h2>Select RAM Size</h2>
-            <br>
-            <br>
-            <div class="btn-group btn-group-justified">
-  <a class="btn ramSel btn-default">4GB</a>
-  <a class="btn ramSel btn-default">8GB</a>
-  <a class="btn ramSel btn-default">16GB</a>
-</div>
-        <div class="text-center col-md-12">
-        <br>
-            <br>
-         <hr>
-        <div class="text-center col-md-12 imgIcon">
-            <div class="circle text-center">2</div>
-            <!--<img class="ramIcon" src="img/bro-explorer.png" /><br/><br/>-->
-            <br>
-        </div>
-        <br>
-        <h2>Verify Browser</h2>
-            <br/>
-        <div class="text-center col-md-12">
-            <div class="btn-group btn-group-justified">
-            <div class="row col-md-12">
-                <div class="text-center col-md-4"><h4>Firefox</h4><button class="btn"><span class="fs1  browSel icon-fx"></span></button><br/><br/></div>
-                <div class="text-center col-md-4"><h4>Chrome</h4><button class="btn"><span class="fs1 browSel icon-chrome"></span></button><br/><br/></div>
-                <div class="text-center col-md-4"><h4>IE</h4><button class="btn"><span class="fs1 browSel icon-IE"></span></button><br/><br/></div>
+	</div>
+    <div class="row setup-content" id="step-1">
+        <div class="col-xs-12">
+            <div class="col-md-12 well text-center">
+                <h2> Select RAM amount </h2>
+                <div class="btn-group btn-group-justified">
+                      <a class="btn ramSel btn-default">4GB</a>
+                      <a class="btn ramSel btn-default">8GB</a>
+                      <a class="btn ramSel btn-default">16GB</a>
+                </div>
+                <br>
+                <div id="ramRow" class="row">
+                    <div class="col-md-12">
+                            <h3 class="text-left">Standard (4GB)</h3>
+                        <div class="col-md-6">
+                            <p class="text-left">This is our standard RAM package. This is the most common portion of RAM on the market today. You'll be running mulitple apps in no time!</p>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="img//ram-sel-4gb.png">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <button id="activate-step-2" class="btn btn-primary btn-lg disabled">Activate Step 2</button>
             </div>
-            <div class="row col-md-12">
-                <div class="text-center col-md-4"><h4>Safari</h4><button class="btn"><span class="fs1 browSel icon-safari"></span></button><r/><br/></div>
-                <div class="text-center col-md-4"><h4>Opera</h4><button class="btn"><span class="fs1 browSel icon-opera"></span></button><br/><br/></div>
-                <div class="text-center col-md-4"><h4>Other</h4><button class="btn"><span class="fs1 browSel icon-other"></span></button><br/><br/></div>
+        </div>
+    </div>
+    <div class="row setup-content" id="step-2">
+        <div class="col-xs-12">
+            <div class="col-md-12 well">
+                <h2 class="text-center"> Verify Browser</h2>
+                        <div class="text-center col-md-12">
+            <div class="btn-group btn-group-justified">
+            <div class="row col-xs-12">
+                <div class="text-center col-sm-4"><h4>Firefox</h4><button class="btn"><span class="fs1 browSel icon-fx"></span></button><br/><br/></div>
+                <div class="text-center col-sm-4"><h4>Chrome</h4><button class="btn"><span class="fs1 browSel icon-chrome"></span></button><br/><br/></div>
+                <div class="text-center col-sm-4"><h4>IE</h4><button class="btn"><span class="fs1 browSel icon-IE"></span></button><br/><br/></div>
+            </div>
+            <div class="row col-xs-12">
+                <div class="text-center col-sm-4"><h4>Safari</h4><button class="btn"><span class="fs1 browSel icon-safari"></span></button><r/><br/></div>
+                <div class="text-center col-sm-4"><h4>Opera</h4><button class="btn"><span class="fs1 browSel icon-opera"></span></button><br/><br/></div>
+                <div class="text-center col-sm-4"><h4>Other</h4><button class="btn"><span class="fs1 browSel icon-other"></span></button><br/><br/></div>
                 <br/>
             </div>
             </div>
         </div>
+                      <button id="activate-step-3" class="btn btn-primary btn-lg disabled">Activate Step 3</button>
+            </div>
         </div>
-        
-        <div class="text-center col-md-12">
+    </div>
+    <div class="row setup-content" id="step-3">
+        <div class="col-xs-12">
+            <div class="col-md-12 well">
+                <h2 class="text-center"> Download</h2>
+                    <div class="text-center col-md-12">
             <hr>
         <br/>
-   
-        <div class="text-center col-md-12 imgIcon">
-             <div class="circle text-center">3</div>
-            <!--<img class="ramIcon" src="img/dl-icon.png" /><br/><br/>-->
-        </div>
-
-        <h2 >Download</h2>
-            <br/>
             <p>You don't need a reason. Just trust us!</p>
             
             <br/>
@@ -199,10 +227,17 @@
         <span class="text-success" id="done"></span>
         <br/>
             </div>
-       </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <br>
+            <hr>
+        <div id="why" ></div>
+</div>
         
         <div class="text-center col-md-12">
-            <div id="why" ></div>
+            
             <br/>
             <br/>
             <br/>
