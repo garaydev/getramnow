@@ -5,15 +5,35 @@ Writted and maintained by Annie!
 */
 $(document).ready(function(){
     
-    $("#downloadBar").hide();
-        
+    $("#downloadBar").hide(); 
     
-    //owl
+    //spyscroll
+    $('body').scrollspy({ target: '.navbar-collapse' });
+    
+    var $body   = $(document.body);
+    var navHeight = $('.navbar').outerHeight(true) + 10;
+
+           $body.scrollspy({
+        target: '#menuTop',
+        offset: navHeight
+    });
+
+    
+    //owlCarousel code
      $("#owl-example").owlCarousel({
-autoPlay: 7000, //Set AutoPlay to 7 seconds
-singleItem:true
- 
-});
+        autoPlay: 7000, //Set AutoPlay to 7 seconds
+        singleItem:true
+
+        });
+    
+    //remove collapse for navbar-bar when clicked
+    $(function() {
+        $('#menuTop .nav a').on('click', function(){ 
+            if($('.navbar-toggle').css('display') !='none'){
+                $(".navbar-toggle").trigger( "click" );
+            }
+        });
+    });
     
     //navigation animation code
 //        $('.navs a[href*=#]:not([href=#])').click(function() {
@@ -30,28 +50,6 @@ singleItem:true
 //            }
 //        }
 //    });
-    
-    //spyscroll
-    $('body').scrollspy({ target: '.navbar-collapse' });
-    
-var $body   = $(document.body);
-var navHeight = $('.navbar').outerHeight(true) + 10;
 
-       $body.scrollspy({
-	target: '#menuTop',
-	offset: navHeight
-});
-   
-
-
-    //remove collapse for navbar-bar when clicked
-    $(function() {
-        $('#menuTop .nav a').on('click', function(){ 
-            if($('.navbar-toggle').css('display') !='none'){
-                $(".navbar-toggle").trigger( "click" );
-            }
-        });
-    });
     
 });
-

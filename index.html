@@ -24,7 +24,6 @@
     <link rel="stylesheet" href="css/icomoon.browsers.css">
       
     <!-- Google Fonts-->
-      <link href='http://fonts.googleapis.com/css?family=Lato:400,900' rel='stylesheet' type='text/css'>
       <link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
       <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
       
@@ -38,7 +37,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
- <body id="casa">
+ <body data-spy="scroll" id="casa">
      <div id="menuTop">
     <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
@@ -133,6 +132,7 @@
         <h1 class="bolderDark larger" >Getting Started</h1>
         <hr>
             <i class="reviews-icon fa fa-road  fa-5x "></i>
+            
         <h1> It's as easy as <span id="threeSteps" class="bolderLight larger"> 1 ... 2 ... 3</span></h1>
         <hr>
 <!-- START OF Wizard Setup-->
@@ -162,25 +162,55 @@
         <div class="col-xs-12">
             <div class="col-md-12 well text-center">
                 <h2> Select RAM amount </h2>
-                <div class="btn-group btn-group-justified">
-                      <a class="btn ramSel btn-default">4GB</a>
-                      <a class="btn ramSel btn-default">8GB</a>
-                      <a class="btn ramSel btn-default">16GB</a>
+                <div id="myTab" role="tablist" class="btn-group btn-group-justified">
+                      <a  href="#4gbRAM" class="btn ramSel btn-default" aria-controls="home" role="tab" data-toggle="tab" >4GB</a>
+                      <a href="#8gbRAM" class="btn ramSel btn-default" aria-controls="home" role="tab" data-toggle="tab" >8GB</a>
+                      <a href="#16gbRAM" class="btn ramSel btn-default" aria-controls="home" role="tab" data-toggle="tab">16GB</a>
                 </div>
                 <br>
+                <!-- START OF RAM SELECT INFO PANEL-->
                 <div id="ramRow" class="row">
                     <div class="col-md-12">
-                            <h3 class="text-left">Standard (4GB)</h3>
-                        <div class="col-md-6">
-                            <p class="text-left">This is our standard RAM package. This is the most common portion of RAM on the market today. You'll be running mulitple apps in no time!</p>
+                        <div class="tab-content">
+                            <!-- IN 4gig section -->
+                            <div role="tabpanel" class="tab-pane" id="4gbRAM">
+                                <h3 class="text-left bolder basic">Standard (4GB)</h3>
+                                <div class="col-md-6">
+                                    <p class="text-left">This is our standard RAM package. This is the most common portion of RAM on the market today. You'll be running mulitple apps in no time!</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <img class="center-img img-responsive" src="img/ram-sel-4gb.png">
+                                </div>
+                            </div>
+                            <!-- OUT OF 4gig section -->
+                            <!-- IN 8gig section -->
+                            <div role="tabpanel" class="tab-pane" id="8gbRAM">
+                                <h3 class="text-left bolder professional">Professional (8GB)</h3>
+                                <div class="col-md-6">
+                                    <p class="text-left"> The Professional package brings you great speeds at a sizeable download size. With double the speed of the Standard pack, users will really see a boost in all aspects of computer usage. Get ready to be ligthing fast! </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <img class="center-img img-responsive" src="img/ram-sel-8gb.png">
+                                </div>
+                            </div>
+                            <!-- OUT OF 8gig section -->
+                             <!-- IN 8gig section -->
+                            <div role="tabpanel" class="tab-pane" id="16gbRAM">
+                                <h3 class="text-left bolder extreme">Extreme (16GB)</h3>
+                                <div class="col-md-6">
+                                    <p class="text-left"> This is just an insane amount of RAM. You can run 100 instances of Netflix. You can download everything on BitTorrnet. You can record yourself recording yourself! 16 Gigs of RAM? Really!?. Go download everything. Go run everything. Never stop, always speed! </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <img class="center-img img-responsive" src="img/ram-sel-16gb.png">
+                                </div>
+                            </div>
+                            <!-- OUT OF 8gig section -->
                         </div>
-                        <div class="col-md-6">
-                            <img src="img//ram-sel-4gb.png">
-                        </div>
-                    </div>
+                   </div>
                 </div>
+                <!-- END OF: RAM SELECT INFO PANEL-->
                 <br>
-                <button id="activate-step-2" class="btn btn-primary btn-lg disabled">Activate Step 2</button>
+                <button id="activate-step-2" class="btn btn-primary btn-lg disabled">Next! Step 2</button>
             </div>
         </div>
     </div>
@@ -188,22 +218,24 @@
         <div class="col-xs-12">
             <div class="col-md-12 well">
                 <h2 class="text-center"> Verify Browser</h2>
-                        <div class="text-center col-md-12">
-            <div class="btn-group btn-group-justified">
-            <div class="row col-xs-12">
-                <div class="text-center col-sm-4"><h4>Firefox</h4><button class="btn"><span class="fs1 browSel icon-fx"></span></button><br/><br/></div>
-                <div class="text-center col-sm-4"><h4>Chrome</h4><button class="btn"><span class="fs1 browSel icon-chrome"></span></button><br/><br/></div>
-                <div class="text-center col-sm-4"><h4>IE</h4><button class="btn"><span class="fs1 browSel icon-IE"></span></button><br/><br/></div>
-            </div>
-            <div class="row col-xs-12">
-                <div class="text-center col-sm-4"><h4>Safari</h4><button class="btn"><span class="fs1 browSel icon-safari"></span></button><r/><br/></div>
-                <div class="text-center col-sm-4"><h4>Opera</h4><button class="btn"><span class="fs1 browSel icon-opera"></span></button><br/><br/></div>
-                <div class="text-center col-sm-4"><h4>Other</h4><button class="btn"><span class="fs1 browSel icon-other"></span></button><br/><br/></div>
-                <br/>
-            </div>
+          <div class="text-center col-md-12">
+              <div id="browserSel">
+                <div class="btn-group btn-group-justified">
+                <div class="row col-xs-12">
+                    <div class="text-center col-sm-4"><h4>Firefox</h4><button class="btn browSel"><span class="browSelIcon fs1 icon-fx"></span></button><br/><br/></div>
+                    <div class="text-center col-sm-4"><h4>Chrome</h4><button class="btn browSel"><span class="browSelIcon fs1 icon-chrome"></span></button><br/><br/></div>
+                    <div class="text-center col-sm-4"><h4>IE</h4><button class="btn browSel"><span class="browSelIcon fs1 icon-IE"></span></button><br/><br/></div>
+                </div>
+                <div class="row col-xs-12">
+                    <div class="text-center col-sm-4"><h4>Safari</h4><button class="btn browSel"><span class="browSelIcon fs1 browSel icon-safari"></span></button><r/><br/></div>
+                    <div class="text-center col-sm-4"><h4>Opera</h4><button class="btn browSel"><span class="browSelIcon fs1 browSel icon-opera"></span></button><br/><br/></div>
+                    <div class="text-center col-sm-4"><h4>Other</h4><button class="btn browSel"><span class="browSelIcon fs1 browSel icon-other"></span></button><br/><br/></div>
+                    <br/>
+                </div>
+                </div>
             </div>
         </div>
-                      <button id="activate-step-3" class="btn btn-primary btn-lg disabled">Activate Step 3</button>
+                      <button id="activate-step-3" class="btn btn-primary btn-lg disabled">Ok! Step 3</button>
             </div>
         </div>
     </div>
@@ -230,17 +262,14 @@
             </div>
         </div>
     </div>
+<br>
 </div>
-            <br>
-            <hr>
-        <div id="why" ></div>
+<div id="why" ></div>                  
 </div>
         
+        
         <div class="text-center col-md-12">
-            
-            <br/>
-            <br/>
-            <br/>
+            <hr>  
              <h1 class="bolderDark larger" >Why us and not the rest?</h1>
                 <h2>Why use GETRAMNOW?</h2>
                 <p>Don't trust us? Read some reviews from pleased customers.</p>
@@ -312,8 +341,11 @@
     <!-- Bootstrap-progressionbar-->
     <script src="js/bootstrap-progressbar.min.js"></script>
     
-    <!-- Include js plugin -->
+    <!-- Included OwlCarousel js plugin -->
     <script src="js/owl.carousel.min.js"></script>
+    
+    <!-- Browser Version check -->
+    <script src="js/browser.version.js"></script>
    
 
 

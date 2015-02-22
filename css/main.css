@@ -11,6 +11,28 @@ footer{
     color:#FFF;
 }
 
+.bolder{
+    font-weight: bolder;
+}
+
+.basic{
+    color: #6B8E23;
+}
+
+.professional{
+    color: #4169E1;
+}
+
+.extreme{
+    color: #FF4500;
+}
+
+
+.center-img{
+
+    margin: 0px auto;
+}
+
 .navbar-brand img{
 	max-width:50px;
     margin-top: -12px;
@@ -130,7 +152,7 @@ border-bottom-color: #18bc9c;
 	font-size: 65px;
 }
 
-button .fs1:hover {
+.fs1:hover, button:hover>.fs1 {
 	font-size: 70px;
     color:#18bc9c;
 }

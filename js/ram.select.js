@@ -5,7 +5,7 @@ Writted and maintained by Annie!
 */
 $(document).ready(function(){
     
-
+        
     //click download RAM button
     $('#h-fill-animation-start').click(function() {
     $('.progress .progress-bar').progressbar({
@@ -20,22 +20,18 @@ $(document).ready(function(){
     $('#downloadBar').slideDown( "slow" );
    });
 
-$(".btn-group > .btn.ramSel").click(function(){
-    $(this).addClass("active").siblings().removeClass("active");
-    $("#activate-step-2").removeClass("disabled");
-});
 
-$(".btn-group > .btn.ramSel").click(function(){
-    $(this).addClass("active").siblings().removeClass("active");
-});
+    $(".btn-group > .btn.ramSel").click(function(){
+        $(this).addClass("active").siblings().removeClass("active");
+        $("#activate-step-2").removeClass("disabled");
+    });
 
-$("button > span.fs1.browSel").click(function(){
-    $("button > span.fs1.browSel").removeClass("activeFS1");
-    $(this).addClass("activeFS1");
-    $("#activate-step-3").removeClass("disabled");
-});
-    
-    
+    $('.browSel').click(function(){
+        $('.browSel span').removeClass('activeFS1');
+        $(this).find('.browSelIcon').addClass('activeFS1');
+        $("#activate-step-3").removeClass("disabled");
+    });
+
     /* Start of SetupWizard */
     var navListItems = $('ul.setup-panel li a'),
         allWells = $('.setup-content');
@@ -68,7 +64,5 @@ $("button > span.fs1.browSel").click(function(){
         $('ul.setup-panel li:eq(2)').removeClass('disabled');
         $('ul.setup-panel li a[href="#step-3"]').trigger('click');
         $(this).remove();
-    })  
-    
-    
+    })      
 });
