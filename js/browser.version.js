@@ -17,7 +17,10 @@ $(document).ready(function(){
         else if (browser.name == 'Chrome'){
             $('#browserSel').find('.icon-chrome').addClass('activeFS1');
         }
-    }
+        else{
+            $('#browserSel').find('.icon-other').addClass('activeFS1');
+        }
+    }       
     
 });
 //getBrowserInfo function

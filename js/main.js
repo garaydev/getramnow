@@ -5,7 +5,7 @@ Writted and maintained by Annie!
 */
 $(document).ready(function(){
     
-    $("#downloadBar").hide(); 
+
     
     //spyscroll
     $('body').scrollspy({ target: '.navbar-collapse' });

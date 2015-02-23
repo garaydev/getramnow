@@ -55,6 +55,7 @@ footer{
 }
 .progress{
   height: 33px;
+  background-color: #444;
 }
 .progress-bar{
     font-size: 20px;

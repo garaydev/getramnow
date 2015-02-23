@@ -4,17 +4,16 @@ Writted and maintained by Annie!
 
 */
 $(document).ready(function(){
-    
         
     //click download RAM button
     $('#h-fill-animation-start').click(function() {
     $('.progress .progress-bar').progressbar({
         display_text: 'fill',
-        transition_delay: 1000,
-        done: function(){ $('#done').append('<h1> Yeah! You just downloaded RAM</h1>');
-                          $('#downloadBarSub').removeClass('progress-bar-success');
-                          $('#downloadBarSub').addClass('progress-bar-info')
-                          
+        transition_delay: 1500,
+        done: function(){ $('#downloadBarSub').removeClass('progress-bar-success');
+                          $('#downloadBarSub').addClass('progress-bar-info');
+                          $('#h-fill-animation-start').addClass('disabled');
+                          getRamBrowserSelects();
                         }
     });
     $('#downloadBar').slideDown( "slow" );
@@ -58,11 +57,27 @@ $(document).ready(function(){
         $('ul.setup-panel li:eq(1)').removeClass('disabled');
         $('ul.setup-panel li a[href="#step-2"]').trigger('click');
         $(this).remove();
-    })
+    });
     
     $('#activate-step-3').on('click', function(e) {
         $('ul.setup-panel li:eq(2)').removeClass('disabled');
         $('ul.setup-panel li a[href="#step-3"]').trigger('click');
         $(this).remove();
-    })      
+    });
+    
+    //get the selected RAM Amount and Browser
+    function getRamBrowserSelects()
+    {
+        //get RAM amount
+//        var ramVal = $('.btn-group > a.btn.ramSel.active').text();
+//        var browserVal = $('.activeFS1').first().parent().first().parent().text();
+//        return;
+    }
+    
+    //get the selected RAM Amount and Browser
+    function BuildRAMBrowserText()
+    {
+        //getRamBrowserSelects();
+    }
+    
 });
