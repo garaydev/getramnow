@@ -47,11 +47,11 @@ footer{
 }
 
 .six-sec-ease-in-out {
-    -webkit-transition: width 12s ease-in-out;
-    -moz-transition: width 12s ease-in-out;
-    -ms-transition: width 12s ease-in-out;
-    -o-transition: width 12s ease-in-out;
-    transition: width 12s ease-in-out;
+    -webkit-transition: width 16s ease-in-out;
+    -moz-transition: width 16s ease-in-out;
+    -ms-transition: width 16s ease-in-out;
+    -o-transition: width 16s ease-in-out;
+    transition: width 16s ease-in-out;
 }
 .progress{
   height: 33px;

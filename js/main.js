@@ -5,8 +5,6 @@ Writted and maintained by Annie!
 */
 $(document).ready(function(){
     
-
-    
     //spyscroll
     $('body').scrollspy({ target: '.navbar-collapse' });
     
