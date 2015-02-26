@@ -20,7 +20,6 @@ $(document).ready(function(){
     
     //owlCarousel code
      owlReviews.owlCarousel({
-        transitionStyle : "fade",
         autoPlay: 7000, //Set AutoPlay to 7 seconds
         singleItem:true
         });
