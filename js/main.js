@@ -9,6 +9,7 @@ $(document).ready(function(){
     $('body').scrollspy({ target: '.navbar-collapse' });
     
     var $body   = $(document.body);
+    var owlReviews = $('#owlGRNreviews');
     var navHeight = $('.navbar').outerHeight(true) + 10;
 
            $body.scrollspy({
@@ -18,10 +19,10 @@ $(document).ready(function(){
 
     
     //owlCarousel code
-     $("#owl-example").owlCarousel({
+     owlReviews.owlCarousel({
+        transitionStyle : "fade",
         autoPlay: 7000, //Set AutoPlay to 7 seconds
         singleItem:true
-
         });
     
     //remove collapse for navbar-bar when clicked

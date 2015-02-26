@@ -125,6 +125,11 @@ border-bottom-color: #18bc9c;
     margin: 0px auto;
 }
 
+.fs1:hover, button:hover>.fs1 {
+	font-size: 70px;
+    color:#18bc9c;
+}
+
 /* Media queries baby!*/
 
 @media (max-width:500px) {
@@ -139,6 +144,15 @@ border-bottom-color: #18bc9c;
     
 }
 
+/* Owl.Carousel */
+
+#owlGRNreviews .item{
+display: block;
+width: 100%;
+height: auto;
+}
+
+
 @media (max-width:500px) {
 
     #footerLead{
@@ -148,15 +162,33 @@ border-bottom-color: #18bc9c;
     
 }
 
+@media (max-width:600px){
+
+    .setup-desc-wrapper{
+    display: none;
+    }
+    
+    .ramTabtext{
+    display: none;
+    }
+    
+    .fs1, button > .fs1{
+    font-size: 40px;
+    }
+    
+    .fs1:hover, button:hover>.fs1 {
+	font-size: 45px;
+    color:#18bc9c;
+    }
+
+}
+
 /* IconMoon Icon styles*/
 .fs1 {
 	font-size: 65px;
 }
 
-.fs1:hover, button:hover>.fs1 {
-	font-size: 70px;
-    color:#18bc9c;
-}
+
 
 .activeFS1 {
 	font-size: 70px;
