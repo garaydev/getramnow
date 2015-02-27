@@ -39,6 +39,9 @@ footer{
     margin-right: 10px;
 }
 
+.resetButton{
+    font-size: 20px;
+}
 .threeReasons i { 
     font-size:70px; 
 }

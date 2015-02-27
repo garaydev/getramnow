@@ -49,5 +49,7 @@ $(document).ready(function(){
 //        }
 //    });
 
+    //init vex theme
+    vex.defaultOptions.className = 'vex-theme-plain';
     
 });

@@ -3,7 +3,7 @@
 Writted and maintained by Annie!
 
 */
-$(document).ready(function(){
+$(document).ready(function () {
     
     
     //constructor function for UserSelections Object, UserSelections Object to hold options selected
@@ -11,7 +11,75 @@ $(document).ready(function(){
         this.ramSelected=ramSelected;
         this.browserSelected=browserSelected;
     }
-
+    
+    //get total Amount of RAM selected
+    function GetRamAmount(rSel)
+    {
+        //default to lowest available RAM
+        var RAMDefault = 4;
+        var TotalRAM = 4;
+        
+        var convertVal;
+        //check before assignment
+        var typeCheck = typeof rSel;
+        if (typeCheck == "string"){
+            convertVal = rSel.slice(0, rSel.indexOf('G'));
+            TotalRAM = Number(convertVal);
+            return TotalRAM;
+        }
+        else{
+            return RAMDefault;
+        }
+    }
+    
+    //get the selected RAM Amount and Browser
+    function getRamBrowserSelects()
+    {
+        var userChoices = new UserSelections();
+        //set defaults
+        userChoices.ramSelected = "Unknown";
+        userChoices.browserSelected = "Unknown";
+        //get actual selections
+        var ramVal = $('.btn-group > a.btn.ramSel.active').text();
+        if (ramVal) { userChoices.ramSelected = ramVal; }
+        var browserVal = $('.activeFS1').first().parent().first().parent().text();
+        if (browserVal) { userChoices.browserSelected = browserVal; }
+        
+        return userChoices;
+    }
+    
+    //get the selected RAM Amount and Browser
+    function BuildRAMBrowserText()
+    {
+        //set default memeber variables
+        var userRAM;
+        var userRAMTotal;
+        var userBrowser;
+        
+        var userGetSelections = new UserSelections();
+        userGetSelections = getRamBrowserSelects();
+        
+        if(userGetSelections.ramSelected){
+            userRAM = userGetSelections.ramSelected;
+            userRAMTotal = GetRamAmount(userGetSelections.ramSelected);
+        }
+        if(userGetSelections.browserSelected){
+            userBrowser = userGetSelections.browserSelected;
+        }
+        if(userBrowser === 'Other'){
+           $('#done').append('<h1> Yeah! You just used a strange browser to download ' + userRAM + ' of RAM! Nice! </h1>'); 
+        }
+        else{
+           $('#done').append('<h1> Yeah! You just used ' + userBrowser + ' to download ' + userRAM + ' of RAM! Congrats! </h1>'); 
+        }
+       
+        
+        
+    }
+    
+    //init hidden elements
+    var resetBtn = $('.btn.btn-warning.resetButton:eq(0)');
+    
     //click download RAM button
     $('#h-fill-animation-start').click(function() {
         //disable previous steps
@@ -27,9 +95,12 @@ $(document).ready(function(){
                           $('#downloadBarSub').addClass('progress-bar-info');
                           $('#h-fill-animation-start').addClass('disabled');
                           BuildRAMBrowserText();
+                          resetBtn.show();
                         }
     });
+        
     $('#downloadBar').slideDown( "slow" );
+        
    });
 
     //activate selected RAM
@@ -70,79 +141,37 @@ $(document).ready(function(){
     $('#activate-step-2').on('click', function(e) {
         $('ul.setup-panel li:eq(1)').removeClass('disabled');
         $('ul.setup-panel li a[href="#step-2"]').trigger('click');
-        $(this).remove();
+        $(this).hide();
     });
     
     $('#activate-step-3').on('click', function(e) {
         $('ul.setup-panel li:eq(2)').removeClass('disabled');
         $('ul.setup-panel li a[href="#step-3"]').trigger('click');
-        $(this).remove();
+        $(this).hide();
     });
     
-    //get the selected RAM Amount and Browser
-    function getRamBrowserSelects()
-    {
-        var userChoices = new UserSelections();
-        //set defaults
-        userChoices.ramSelected = "Unknown";
-        userChoices.browserSelected = "Unknown";
-        //get actual selections
-        var ramVal = $('.btn-group > a.btn.ramSel.active').text();
-        if (ramVal) { userChoices.ramSelected = ramVal; }
-        var browserVal = $('.activeFS1').first().parent().first().parent().text();
-        if (browserVal) { userChoices.browserSelected = browserVal; }
-        
-        return userChoices;
-    }
-    
-    //get the selected RAM Amount and Browser
-    function BuildRAMBrowserText()
-    {
-        //set default memeber variables
-        var userRAM;
-        var userRAMTotal;
-        var userBrowser;
-        
-        var userGetSelections = new UserSelections();
-        userGetSelections = getRamBrowserSelects();
-        
-        if(userGetSelections.ramSelected){
-            userRAM = userGetSelections.ramSelected;
-            userRAMTotal = GetRamAmount(userGetSelections.ramSelected);
+    $('#resetRAMDL').click(function(){
+    vex.dialog.confirm({
+        message: 'Are you absolutely sure you want to destroy the alien planet?',
+        callback: function(value) {
+         if(value){
+            $('#resetRAMDL').hide();
+            $('.progress .progress-bar').attr('data-transitiongoal',0).progressbar();
+            $('#done').html("");
+            $('ul.setup-panel li:eq(0)').removeClass('disabled');
+            $('ul.setup-panel li:eq(2)').addClass('disabled');
+            $('#activate-step-2').show();
+            $('#activate-step-3').show();
+            
+            $('#h-fill-animation-start').removeClass('disabled');
+            $('ul.setup-panel li a[href="#step-1"]').trigger('click');
+         }
+         else{
+             return false;
+         }
         }
-        if(userGetSelections.browserSelected){
-            userBrowser = userGetSelections.browserSelected;
-        }
-        if(userBrowser == 'Other'){
-           $('#done').append('<h1> Yeah! You just used a strange browser to download ' + userRAM + ' of RAM! Nice! </h1>'); 
-        }
-        else{
-           $('#done').append('<h1> Yeah! You just used ' + userBrowser + ' to download ' + userRAM + ' of RAM! Congrats! </h1>'); 
-        }
-       
+    });
+});
+
         
-        
-    }
-    
-    //get total Amount of RAM selected
-    function GetRamAmount(rSel)
-    {
-        //default to lowest available RAM
-        var RAMDefault = 4;
-        var TotalRAM = 4;
-        
-        var convertVal;
-        //check before assignment
-        var typeCheck = typeof rSel;
-        if (typeCheck == "string"){
-            convertVal = rSel.slice(0, rSel.indexOf('G'));
-            TotalRAM = Number(convertVal)
-            return TotalRAM;
-        }
-        else{
-            return RAMDefault;
-        }
-    }
-    
-    
 });
