@@ -104,9 +104,21 @@ $(document).ready(function () {
     
     //init progress bar
     var $pbram = $('.progress .progress-bar');
+    $pbram.data('paused',true);
     
     //click download RAM button
     $('#h-fill-animation-start').click(function() {
+        if($pbram.data('paused')){
+            $pbram.data('paused',false);
+            $('#h-fill-animation-start').removeClass('btn-primary');
+            $('#h-fill-animation-start').addClass('btn-danger');
+        }
+        else{
+            $pbram.data('paused',true);
+            $('#h-fill-animation-start').removeClass('btn-danger');
+            $('#h-fill-animation-start').addClass('btn-primary');
+        }
+            
         if($pbram.attr('data-transitiongoal') == 0){
             $pbram.attr('data-transitiongoal',100);
             $('.progress .progress-bar').addClass('six-sec-ease-in-out');
