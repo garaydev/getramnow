@@ -125,7 +125,7 @@ $(document).ready(function () {
         refresh_speed: 500,
         update: function(current_percentage, total) { 
                                 $('#update').html(current_percentage);
-                                if(current_percentage%5 === 0 && current_percentage < 90){
+                                if( current_percentage > 5 && current_percentage%5 === 0 && current_percentage < 90){
                                     DLProcess();
                                 }
                             },
