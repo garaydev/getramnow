@@ -18,7 +18,6 @@ $(document).ready(function () {
         //default to lowest available RAM
         var RAMDefault = 4;
         var TotalRAM = 4;
-        
         var convertVal;
         //check before assignment
         var typeCheck = typeof rSel;
@@ -72,31 +71,75 @@ $(document).ready(function () {
         else{
            $('#done').append('<h1> Yeah! You just used ' + userBrowser + ' to download ' + userRAM + ' of RAM! Congrats! </h1>'); 
         }
-       
-        
-        
+    }
+    
+    //return DL process message
+    function DLProcess()
+    {
+      // Create Quotes Array
+      var processMsgs = [];
+
+      // The List of Quotes!
+      processMsgs[0] = "Initializing core system drivers...";
+      processMsgs[1] = "Checking Kernel for compatibility...";
+      processMsgs[2] = "Verifying size of Swap File...";
+      processMsgs[3] = "Preparing real-time DRAM installation...";
+      processMsgs[4] = "Applying voltage to transistor gates...";
+      processMsgs[5] = "Recalculating of IC Cells...";
+      processMsgs[6] = "Choosing between subthreshold and weak-inversion modes...";
+      processMsgs[7] = "Overcoming velocity saturation...";
+      processMsgs[8] = "Inventing MOSFET before Bell Labs...";
+      processMsgs[9] = "Synthesizing the human genome...";
+
+      // Assign the Variable "quote" with a Random Quotation from Above
+
+      var quote = processMsgs[Math.floor(Math.random() * processMsgs.length)];
+
+      // Alter the Current (Default) Quote Text with a Random Quote
+      $('#proMessages').text(quote);   
     }
     
     //init hidden elements
     var resetBtn = $('.btn.btn-warning.resetButton:eq(0)');
     
+    //init progress bar
+    var $pbram = $('.progress .progress-bar');
+    
     //click download RAM button
     $('#h-fill-animation-start').click(function() {
+        if($pbram.attr('data-transitiongoal') == 0){
+            $pbram.attr('data-transitiongoal',100);
+            $('.progress .progress-bar').addClass('six-sec-ease-in-out');
+            $pbram.addClass('progress-bar-success');
+            $pbram.removeClass('progress-bar-info');            
+        }
         //disable previous steps
         $('ul.setup-panel li:eq(0)').addClass('disabled');
         $('ul.setup-panel li:eq(1)').addClass('disabled');
-        
-    //process bar init
-    $('.progress .progress-bar').progressbar({
-        display_text: 'fill',
+        //add data-trans attr
+        $pbram.attr('data-transitiongoal',$pbram.attr('data-transitiongoal-backup'));
+        //process bar init
+        $pbram.progressbar({
+        //display_text: 'fill',
         transition_delay: 1500,
-         update: function(current_percentage, total) { $('#update').html(current_percentage); },
-        done: function(){ $('#downloadBarSub').removeClass('progress-bar-success');
-                          $('#downloadBarSub').addClass('progress-bar-info');
-                          $('#h-fill-animation-start').addClass('disabled');
-                          BuildRAMBrowserText();
-                          resetBtn.show();
-                        }
+        refresh_speed: 500,
+        update: function(current_percentage, total) { 
+                                $('#update').html(current_percentage);
+                                if(current_percentage%5 === 0 && current_percentage < 90){
+                                    DLProcess();
+                                }
+                            },
+        done: function(){ if ($pbram.attr('data-transitiongoal') == 100){
+                                $('#proMessages').text('');
+                                $pbram.removeClass('progress-bar-success');
+                                $pbram.addClass('progress-bar-info');
+                                $('#h-fill-animation-start').addClass('disabled');
+                                if( !$.trim( $('#done').html() ).length ){
+                                      BuildRAMBrowserText();
+                                }
+                                resetBtn.show();
+                           }
+                        } //done done!
     });
         
     $('#downloadBar').slideDown( "slow" );
@@ -150,19 +193,22 @@ $(document).ready(function () {
         $(this).hide();
     });
     
+    //Reset RAM Download Wizard
+    
     $('#resetRAMDL').click(function(){
     vex.dialog.confirm({
-        message: 'Are you absolutely sure you want to destroy the alien planet?',
+        message: 'Do you want to reselect your RAM choice?',
         callback: function(value) {
          if(value){
             $('#resetRAMDL').hide();
-            $('.progress .progress-bar').attr('data-transitiongoal',0).progressbar();
-            $('#done').html("");
+            $('.progress .progress-bar').attr('data-transitiongoal',0).progressbar({display_text:'center'});
+            $('#done').empty();
+            $('#proMessages').empty();
             $('ul.setup-panel li:eq(0)').removeClass('disabled');
             $('ul.setup-panel li:eq(2)').addClass('disabled');
             $('#activate-step-2').show();
             $('#activate-step-3').show();
-            
+            $('.progress .progress-bar').removeClass('six-sec-ease-in-out');
             $('#h-fill-animation-start').removeClass('disabled');
             $('ul.setup-panel li a[href="#step-1"]').trigger('click');
          }
