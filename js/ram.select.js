@@ -112,11 +112,14 @@ $(document).ready(function () {
             $pbram.data('paused',false);
             $('#h-fill-animation-start').removeClass('btn-primary');
             $('#h-fill-animation-start').addClass('btn-danger');
+            $('#h-fill-animation-start').html('Pause?');
         }
         else{
             $pbram.data('paused',true);
             $('#h-fill-animation-start').removeClass('btn-danger');
             $('#h-fill-animation-start').addClass('btn-primary');
+            $('#h-fill-animation-start').html('Download Now!');
+            $('.progress .progress-bar').attr('data-transitiongoal',$pbram.attr('data-transitiongoal-backup')).progressbar();
         }
             
         if($pbram.attr('data-transitiongoal') == 0){
@@ -130,7 +133,8 @@ $(document).ready(function () {
         $('ul.setup-panel li:eq(1)').addClass('disabled');
         //add data-trans attr
         $pbram.attr('data-transitiongoal',$pbram.attr('data-transitiongoal-backup'));
-        //process bar init
+        //process bar init'
+        if($pbram.data('paused') == false){
         $pbram.progressbar({
         //display_text: 'fill',
         transition_delay: 1500,
@@ -153,10 +157,11 @@ $(document).ready(function () {
                            }
                         } //done done!
     });
-        
+    }   
     $('#downloadBar').slideDown( "slow" );
-        
+      
    });
+    
 
     //activate selected RAM
     $(".btn-group > .btn.ramSel").click(function(){
