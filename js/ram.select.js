@@ -105,11 +105,14 @@ $(document).ready(function () {
     //init progress bar
     var $pbram = $('.progress .progress-bar');
     $pbram.data('paused',true);
-    
     //click download RAM button
     $('#h-fill-animation-start').click(function() {
+        if($pbram.hasClass('six-sec-ease-in-out') == false){
+            $pbram.addClass('six-sec-ease-in-out');
+        }
         if($pbram.data('paused')){
             $pbram.data('paused',false);
+            $pbram.attr('data-transitiongoal',$pbram.attr('data-transitiongoal-backup'));
             $('#h-fill-animation-start').removeClass('btn-primary');
             $('#h-fill-animation-start').addClass('btn-danger');
             $('#h-fill-animation-start').html('Pause?');
@@ -118,8 +121,7 @@ $(document).ready(function () {
             $pbram.data('paused',true);
             $('#h-fill-animation-start').removeClass('btn-danger');
             $('#h-fill-animation-start').addClass('btn-primary');
-            $('#h-fill-animation-start').html('Download Now!');
-            $('.progress .progress-bar').attr('data-transitiongoal',$pbram.attr('data-transitiongoal-backup')).progressbar();
+            $('#h-fill-animation-start').html('Resume Download!');
         }
             
         if($pbram.attr('data-transitiongoal') == 0){
@@ -132,18 +134,23 @@ $(document).ready(function () {
         $('ul.setup-panel li:eq(0)').addClass('disabled');
         $('ul.setup-panel li:eq(1)').addClass('disabled');
         //add data-trans attr
-        $pbram.attr('data-transitiongoal',$pbram.attr('data-transitiongoal-backup'));
+        
         //process bar init'
         if($pbram.data('paused') == false){
         $pbram.progressbar({
         //display_text: 'fill',
         transition_delay: 1500,
         refresh_speed: 500,
-        update: function(current_percentage, total) { 
-                                $('#update').html(current_percentage);
+        update: function(current_percentage, total) {
+                                if (current_percentage > 0)
+                                    $('#update').html(current_percentage);
                                 if( current_percentage > 5 && current_percentage%5 === 0 && current_percentage < 90){
                                     DLProcess();
                                 }
+                                if (current_percentage >= 90 && current_percentage <= 99){
+                                    $('#proMessages').text('Almost Done.....');
+                                }
+                               
                             },
         done: function(){ if ($pbram.attr('data-transitiongoal') == 100){
                                 $('#proMessages').text('');
@@ -154,6 +161,10 @@ $(document).ready(function () {
                                       BuildRAMBrowserText();
                                 }
                                 resetBtn.show();
+                                $pbram.data('paused',true);
+                                $('#h-fill-animation-start').removeClass('btn-danger');
+                                $('#h-fill-animation-start').addClass('btn-success');
+                                $('#h-fill-animation-start').html('Success!');
                            }
                         } //done done!
     });
@@ -214,12 +225,13 @@ $(document).ready(function () {
     
     $('#resetRAMDL').click(function(){
     vex.dialog.confirm({
-        message: 'Do you want to reselect your RAM choice?',
+        message: 'Do you want to reselect your RAM?',
         callback: function(value) {
          if(value){
             $('#resetRAMDL').hide();
             $('.progress .progress-bar').attr('data-transitiongoal',0).progressbar({display_text:'center'});
             $('#done').empty();
+            $('#update').empty();
             $('#proMessages').empty();
             $('ul.setup-panel li:eq(0)').removeClass('disabled');
             $('ul.setup-panel li:eq(2)').addClass('disabled');
@@ -228,6 +240,10 @@ $(document).ready(function () {
             $('.progress .progress-bar').removeClass('six-sec-ease-in-out');
             $('#h-fill-animation-start').removeClass('disabled');
             $('ul.setup-panel li a[href="#step-1"]').trigger('click');
+            $('#h-fill-animation-start').removeClass('btn-danger');
+            $('#h-fill-animation-start').removeClass('btn-success');
+            $('#h-fill-animation-start').addClass('btn-primary');
+            $('#h-fill-animation-start').html('Download!');
          }
          else{
              return false;
