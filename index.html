@@ -261,7 +261,7 @@
             
             <br/>
             
-             <button type="button" class="btn btn-primary" id="h-fill-animation-start">Download Now!</button>
+             <button type="button" class="btn btn-primary DLInitClick" id="h-fill-animation-start">Download Now!</button>
             <br/><br/>
             
          <div  id="downloadBar" class="progress">
@@ -384,7 +384,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="js/bootstrap/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
-     <script src="js/ram.select.js"></script>
+    <script src="js/ram.select.js"></script>
+    <script src="js/ga-dl.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
     
@@ -405,6 +406,19 @@
     
     <!-- Vex.js load -->
     <script src="js/vex.combined.min.js"></script>
+    
+    <!-- Google Analytics load -->
+    <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-60303815-1']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+    </script>
 
 <!-- This website was developed using Bootstrap and the Internet. Thanks Al Gore. | @Annie! -->
 

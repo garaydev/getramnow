@@ -244,6 +244,7 @@ $(document).ready(function () {
             $('#h-fill-animation-start').removeClass('btn-success');
             $('#h-fill-animation-start').addClass('btn-primary');
             $('#h-fill-animation-start').html('Download!');
+            $('#h-fill-animation-start').addClass('DLInitClick');
          }
          else{
              return false;
