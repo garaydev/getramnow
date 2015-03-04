@@ -11,6 +11,18 @@ footer{
     color:#FFF;
 }
 
+.statCover{
+    background-color:#008080;
+    color:#FFF;
+}
+
+.statCoverDatas{
+   font-size: 35px;
+}
+p.statCoverDatas{
+   font-size: 20px;
+}
+
 .bolder{
     font-weight: bolder;
 }
