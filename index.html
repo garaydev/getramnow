@@ -34,7 +34,10 @@
       
     <!-- Vex Dialog windows -->
     <link rel="stylesheet" href="css/vex.css">
-    <link rel="stylesheet" href="css/vex-theme-plain.css">  
+    <link rel="stylesheet" href="css/vex-theme-plain.css">
+      
+    <!-- Odometer default theme -->
+    <link rel="stylesheet" href="css/odometer-default.css">
       
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -347,7 +350,8 @@
                 </div>
                  <div class="text-center col-md-4">
                      <i class="fa fa-check-circle fa-3x"></i>
-                     <h3 class="statCoverDatas">16</h3>
+                     <br/>
+                     <h3 id="totalDLs" class="statCoverDatas odometer">1</h3>
                      <p class="statCoverDatas"> Total Downloads</p>
                 </div>
                  <div class="text-center col-md-4">
@@ -449,7 +453,8 @@
     
     <!-- Vex.js load -->
     <script src="js/vex.combined.min.js"></script>
-    
+    <!-- Odomemter JS load -->
+    <script src="js/odometer.min.js"></script>
     <!-- Google Analytics load -->
     <script type="text/javascript">
           var _gaq = _gaq || [];

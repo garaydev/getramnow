@@ -33,6 +33,20 @@ $(document).ready(function(){
         });
     });
     
+    //checkVisible Function
+    
+    function checkVisible( elm, eval ) {
+        eval = eval || "visible";
+        var vpH = $(window).height(), // Viewport Height
+            st = $(window).scrollTop(), // Scroll Top
+            y = $(elm).offset().top,
+            elementHeight = $(elm).height();
+    
+        if (eval == "visible") return ((y < (vpH + st)) && (y > (st - elementHeight)));
+        if (eval == "above") return ((y < (vpH + st)));
+    }
+    
+    
     //navigation animation code
 //        $('.navs a[href*=#]:not([href=#])').click(function() {
 //    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
@@ -51,5 +65,20 @@ $(document).ready(function(){
 
     //init vex theme
     vex.defaultOptions.className = 'vex-theme-plain';
+
+    //odometer check
+    var $tDLs = $('#totalDLs');
+    
+    $(window).scroll(function() {
+        if (checkVisible($('#totalDLs'))) {
+            setTimeout(function(){
+                $tDLs.html(16);
+            }, 1000);
+        } 
+    });
+    
+    //odometer update TotalDLs
+    
+    
     
 });
