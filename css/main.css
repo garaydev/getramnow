@@ -195,8 +195,25 @@ height: auto;
 	font-size: 45px;
     color:#18bc9c;
     }
+    
+    .ramTabHeader{
+        display:none;
+    }
+    
+    .ramTabImg{
+        max-width: 128px;
+    }
+    
+    .WSButtonsText{
+        display:none;
+    }
+    
+    .WSButtonsIcon{
+        font-size: 5px;
+    }
 
 }
+
 
 /* IconMoon Icon styles*/
 .fs1 {

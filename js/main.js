@@ -79,6 +79,13 @@ $(document).ready(function(){
     
     //odometer update TotalDLs
     
+    //popovers for Wizard Setup options
+    var allWSSteps = $('.WSSteps');
     
+    allWSSteps.tooltip({
+        trigger: "hover",
+        delay: {show : 1000, hide : 0}
+    });
+
     
 });

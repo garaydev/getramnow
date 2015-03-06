@@ -116,6 +116,7 @@ $(document).ready(function () {
             $('#h-fill-animation-start').removeClass('btn-primary');
             $('#h-fill-animation-start').addClass('btn-danger');
             $('#h-fill-animation-start').html('Pause?');
+            
         }
         else{
             $pbram.data('paused',true);
@@ -230,6 +231,8 @@ $(document).ready(function () {
          if(value){
             $('#resetRAMDL').hide();
             $('.progress .progress-bar').attr('data-transitiongoal',0).progressbar({display_text:'center'});
+            $pbram.addClass('progress-bar-success');
+            $pbram.removeClass('progress-bar-info');
             $('#done').empty();
             $('#update').empty();
             $('#proMessages').empty();
@@ -245,6 +248,7 @@ $(document).ready(function () {
             $('#h-fill-animation-start').addClass('btn-primary');
             $('#h-fill-animation-start').html('Download!');
             $('#h-fill-animation-start').addClass('DLInitClick');
+             
          }
          else{
              return false;
