@@ -116,6 +116,7 @@ $(document).ready(function () {
             $('#h-fill-animation-start').removeClass('btn-primary');
             $('#h-fill-animation-start').addClass('btn-danger');
             $('#h-fill-animation-start').html('Pause?');
+            $('#h-fill-animation-start').removeClass('hvr-float-shadow');
             
         }
         else{
@@ -123,13 +124,15 @@ $(document).ready(function () {
             $('#h-fill-animation-start').removeClass('btn-danger');
             $('#h-fill-animation-start').addClass('btn-primary');
             $('#h-fill-animation-start').html('Resume Download!');
+            $('#h-fill-animation-start').addClass('hvr-float-shadow');
         }
             
         if($pbram.attr('data-transitiongoal') == 0){
             $pbram.attr('data-transitiongoal',100);
             $('.progress .progress-bar').addClass('six-sec-ease-in-out');
             $pbram.addClass('progress-bar-success');
-            $pbram.removeClass('progress-bar-info');            
+            $pbram.removeClass('progress-bar-info');
+            
         }
         //disable previous steps
         $('ul.setup-panel li:eq(0)').addClass('disabled');
