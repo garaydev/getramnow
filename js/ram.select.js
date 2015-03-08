@@ -99,6 +99,29 @@ $(document).ready(function () {
       $('#proMessages').text(quote);   
     }
     
+    //set DL speed based on CSS classes
+    function SetDLRAMSpeed(amount)
+    {
+        if(amount == 4){
+            $('.progress .progress-bar').removeClass('.six-twelve-ease-in-out');
+            $('.progress .progress-bar').removeClass('.six-ten-ease-in-out');
+            $('.progress .progress-bar').addClass('.six-sec-ease-in-out');
+            window.alert('4');
+        }
+        if(amount == 8){
+            $('.progress .progress-bar').removeClass('.six-twelve-ease-in-out');
+            $('.progress .progress-bar').removeClass('.six-sec-ease-in-out');
+            $('.progress .progress-bar').addClass('.six-ten-ease-in-out');
+            window.alert('8');
+        }
+        if(amount == 16){
+            $('.progress .progress-bar').removeClass('.six-sec-ease-in-out');
+            $('.progress .progress-bar').removeClass('.six-ten-ease-in-out');
+            $('.progress .progress-bar').addClass('.six-twelve-ease-in-out');
+            window.alert('16');
+        }
+    }
+    
     //init hidden elements
     var resetBtn = $('.btn.btn-warning.resetButton:eq(0)');
     
@@ -107,6 +130,13 @@ $(document).ready(function () {
     $pbram.data('paused',true);
     //click download RAM button
     $('#h-fill-animation-start').click(function() {
+        
+        //get RAM amount to determine speed of DL
+        var ramAmnt = 4;
+        var ramVal = $('.btn-group > a.btn.ramSel.active').text();
+        if (ramVal) { ramAmnt = GetRamAmount(ramVal);}
+        SetDLRAMSpeed(ramAmnt)
+
         if($pbram.hasClass('six-sec-ease-in-out') == false){
             $pbram.addClass('six-sec-ease-in-out');
         }
@@ -251,7 +281,6 @@ $(document).ready(function () {
             $('#h-fill-animation-start').addClass('btn-primary');
             $('#h-fill-animation-start').html('Download!');
             $('#h-fill-animation-start').addClass('DLInitClick');
-             
          }
          else{
              return false;

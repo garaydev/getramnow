@@ -68,6 +68,23 @@ p.statCoverDatas{
     -o-transition: width 16s ease-in-out;
     transition: width 16s ease-in-out;
 }
+
+.six-ten-ease-in-out {
+    -webkit-transition: width 24s ease-in-out;
+    -moz-transition: width 24s ease-in-out;
+    -ms-transition: width 24s ease-in-out;
+    -o-transition: width 24s ease-in-out;
+    transition: width 24s ease-in-out;
+}
+
+.six-twelve-ease-in-out {
+    -webkit-transition: width 32s ease-in-out;
+    -moz-transition: width 32s ease-in-out;
+    -ms-transition: width 32s ease-in-out;
+    -o-transition: width 32s ease-in-out;
+    transition: width 32s ease-in-out;
+}
+
 .progress{
   height: 33px;
   background-color: #444;
