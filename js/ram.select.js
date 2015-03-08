@@ -100,27 +100,30 @@ $(document).ready(function () {
     }
     
     //set DL speed based on CSS classes
-    function SetDLRAMSpeed(amount)
+    function removeDLSpeedClasses(el)
+    {
+      $(el).removeClass('six-sec-ease-in-out');
+      $(el).removeClass('six-ten-ease-in-out');
+      $(el).removeClass('six-twelve-ease-in-out');
+    }
+    
+    //set DL speed based on CSS classes
+    function SetDLRAMSpeed(amount, el)
     {
         if(amount == 4){
-            $('.progress .progress-bar').removeClass('.six-twelve-ease-in-out');
-            $('.progress .progress-bar').removeClass('.six-ten-ease-in-out');
-            $('.progress .progress-bar').addClass('.six-sec-ease-in-out');
-            window.alert('4');
+            removeDLSpeedClasses($(el));
+            $(el).addClass('six-sec-ease-in-out');
         }
         if(amount == 8){
-            $('.progress .progress-bar').removeClass('.six-twelve-ease-in-out');
-            $('.progress .progress-bar').removeClass('.six-sec-ease-in-out');
-            $('.progress .progress-bar').addClass('.six-ten-ease-in-out');
-            window.alert('8');
+            removeDLSpeedClasses($(el));
+            $(el).addClass('six-ten-ease-in-out');
         }
         if(amount == 16){
-            $('.progress .progress-bar').removeClass('.six-sec-ease-in-out');
-            $('.progress .progress-bar').removeClass('.six-ten-ease-in-out');
-            $('.progress .progress-bar').addClass('.six-twelve-ease-in-out');
-            window.alert('16');
+            removeDLSpeedClasses($(el));
+            $(el).addClass('six-twelve-ease-in-out');
         }
     }
+     
     
     //init hidden elements
     var resetBtn = $('.btn.btn-warning.resetButton:eq(0)');
@@ -135,19 +138,15 @@ $(document).ready(function () {
         var ramAmnt = 4;
         var ramVal = $('.btn-group > a.btn.ramSel.active').text();
         if (ramVal) { ramAmnt = GetRamAmount(ramVal);}
-        SetDLRAMSpeed(ramAmnt)
+        SetDLRAMSpeed(ramAmnt,$pbram)
 
-        if($pbram.hasClass('six-sec-ease-in-out') == false){
-            $pbram.addClass('six-sec-ease-in-out');
-        }
         if($pbram.data('paused')){
             $pbram.data('paused',false);
             $pbram.attr('data-transitiongoal',$pbram.attr('data-transitiongoal-backup'));
             $('#h-fill-animation-start').removeClass('btn-primary');
             $('#h-fill-animation-start').addClass('btn-danger');
             $('#h-fill-animation-start').html('Pause?');
-            $('#h-fill-animation-start').removeClass('hvr-float-shadow');
-            
+            $('#h-fill-animation-start').removeClass('hvr-float-shadow');            
         }
         else{
             $pbram.data('paused',true);
@@ -159,7 +158,6 @@ $(document).ready(function () {
             
         if($pbram.attr('data-transitiongoal') == 0){
             $pbram.attr('data-transitiongoal',100);
-            $('.progress .progress-bar').addClass('six-sec-ease-in-out');
             $pbram.addClass('progress-bar-success');
             $pbram.removeClass('progress-bar-info');
             
@@ -263,6 +261,7 @@ $(document).ready(function () {
         callback: function(value) {
          if(value){
             $('#resetRAMDL').hide();
+            $pbram.data('paused');
             $('.progress .progress-bar').attr('data-transitiongoal',0).progressbar({display_text:'center'});
             $pbram.addClass('progress-bar-success');
             $pbram.removeClass('progress-bar-info');
