@@ -130,9 +130,15 @@ $(document).ready(function () {
     
     //init progress bar
     var $pbram = $('.progress .progress-bar');
+    var $pbp = $('#downloadBar')
     $pbram.data('paused',true);
     //click download RAM button
     $('#h-fill-animation-start').click(function() {
+        
+        if(!$pbp.hasClass('active')){
+            $pbp.addClass('active');
+            $pbp.addClass('progress-striped');
+        }
         
         //get RAM amount to determine speed of DL
         var ramAmnt = 4;
@@ -145,8 +151,12 @@ $(document).ready(function () {
             $pbram.attr('data-transitiongoal',$pbram.attr('data-transitiongoal-backup'));
             $('#h-fill-animation-start').removeClass('btn-primary');
             $('#h-fill-animation-start').addClass('btn-danger');
+            
             $('#h-fill-animation-start').html('Pause?');
-            $('#h-fill-animation-start').removeClass('hvr-float-shadow');            
+            $('#h-fill-animation-start').removeClass('hvr-float-shadow'); 
+            
+            $pbram.addClass('progress-bar-success');
+            $pbram.removeClass('progress-bar-danger');
         }
         else{
             $pbram.data('paused',true);
@@ -154,6 +164,11 @@ $(document).ready(function () {
             $('#h-fill-animation-start').addClass('btn-primary');
             $('#h-fill-animation-start').html('Resume Download!');
             $('#h-fill-animation-start').addClass('hvr-float-shadow');
+            
+            $pbram.removeClass('progress-bar-success');
+            $pbram.addClass('progress-bar-danger');
+            
+            $pbp.removeClass('active');
         }
             
         if($pbram.attr('data-transitiongoal') == 0){
@@ -186,12 +201,15 @@ $(document).ready(function () {
                             },
         done: function(){ if ($pbram.attr('data-transitiongoal') == 100){
                                 $('#proMessages').text('');
+                                $pbram.removeClass('progress-bar-danger');
                                 $pbram.removeClass('progress-bar-success');
                                 $pbram.addClass('progress-bar-info');
                                 $('#h-fill-animation-start').addClass('disabled');
                                 if( !$.trim( $('#done').html() ).length ){
                                       BuildRAMBrowserText();
                                 }
+                                $pbp.removeClass('active');
+                                $pbp.removeClass('progress-striped');
                                 resetBtn.show();
                                 $pbram.data('paused',true);
                                 $('#h-fill-animation-start').removeClass('btn-danger');
@@ -278,7 +296,7 @@ $(document).ready(function () {
             $('#h-fill-animation-start').removeClass('btn-danger');
             $('#h-fill-animation-start').removeClass('btn-success');
             $('#h-fill-animation-start').addClass('btn-primary');
-            $('#h-fill-animation-start').html('Download!');
+            $('#h-fill-animation-start').html('Download Again!');
             $('#h-fill-animation-start').addClass('DLInitClick');
          }
          else{
