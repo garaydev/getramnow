@@ -72,7 +72,7 @@ $(document).ready(function(){
     $(window).scroll(function() {
         if (checkVisible($('#totalDLs'))) {
             setTimeout(function(){
-                $tDLs.html(16);
+                $tDLs.html(70);
             }, 1000);
         } 
     });

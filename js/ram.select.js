@@ -169,9 +169,16 @@ $(document).ready(function () {
             $pbram.addClass('progress-bar-danger');
             
             $pbp.removeClass('active');
+            
+            $pbp.stop()
+            $pbram.stop()
+            removeDLSpeedClasses($pbram)
+            $pbram.attr('data-transitiongoal') == 0;
+            
+            $pbram.progressbar({ transition_delay: 0, refresh_speed: 0 });
         }
             
-        if($pbram.attr('data-transitiongoal') == 0){
+        if($pbram.attr('data-transitiongoal') == 0 && $pbram.data('paused') == false){
             $pbram.attr('data-transitiongoal',100);
             $pbram.addClass('progress-bar-success');
             $pbram.removeClass('progress-bar-info');
